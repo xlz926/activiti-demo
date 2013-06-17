@@ -1,19 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Copyright 2010 The myBatis Team
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -30,8 +15,8 @@
 
    <!-- in-memory database and a datasource -->
     <jdbc:embedded-database id="dataSource">
-        <jdbc:script location="classpath:database/jpetstore-hsqldb-schema.sql"/>
-        <jdbc:script location="classpath:database/jpetstore-hsqldb-dataload.sql"/>
+        <jdbc:script location="classpath:database/activiti-demo-schema.sql"/>
+        <jdbc:script location="classpath:database/activiti-demo-dataload.sql"/>
     </jdbc:embedded-database>
 
     <!-- transaction manager, use JtaTransactionManager for global tx -->
@@ -39,8 +24,7 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <!-- enable component scanning (beware that this does not enable mapper scanning!) -->    
-    <context:component-scan base-package="org.mybatis.jpetstore.service" />
+
 
     <!-- enable autowire -->
     <context:annotation-config />
