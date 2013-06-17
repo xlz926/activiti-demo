@@ -14,10 +14,9 @@
 	     <spring.version>3.1.2.RELEASE</spring.version>
 	     <mybatis.version>1.0.1</mybatis.version>
 	     <jackson.version>2.0.6</jackson.version>
+	      <shiro.version>1.2.1</shiro.version>
 	  </properties>
-	  
-	  
-	  
+	 
 	<dependencies>
 	
 	<!-- srping 框架依赖包 -->
@@ -81,6 +80,28 @@
 		  <artifactId>slf4j-jdk14</artifactId>
 		   <version>${slf4j.version}</version>
 		</dependency>
+		
+		
+		<!-- 会话权限管理shiro -->
+			<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.7</version>
+		</dependency>
+		
+		
+		
+		
 		
 		
 			<dependency>

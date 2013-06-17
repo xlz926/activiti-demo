@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 		return "src/themes/default/" + component + ".css";
 	});
    
-   var poushengFile =['util',
+   var viewuiFile =['util',
                       'panel',
                       'layout',
                       'contextmenu',
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
 			    dest: "src/themes/default/pousheng.css"
         	},
         	ui:{
-        		src:poushengFile,
+        		src:viewuiFile,
         		dest: "src/view.ui.js"
         	}
         },
