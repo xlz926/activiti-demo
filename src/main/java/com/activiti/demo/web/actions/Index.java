@@ -16,4 +16,6 @@ public class Index {
 	public String userIndex(HttpServletRequest request) {
 		return "index";
 	}
+	
+	
 }
