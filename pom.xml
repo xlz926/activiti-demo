@@ -10,7 +10,6 @@
 	
 	
 	  <properties>
-	     <slf4j.version>1.7.1</slf4j.version>
 	     <spring.version>3.1.2.RELEASE</spring.version>
 	     <mybatis.version>1.0.1</mybatis.version>
 	     <jackson.version>2.0.6</jackson.version>
@@ -20,7 +19,8 @@
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<commons-io.version>2.4</commons-io.version>
 		<spymemcached.version>2.8.1</spymemcached.version>
-		
+		<slf4j.version>1.7.1</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
 			<!-- 项目数据库属性 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
@@ -193,6 +193,27 @@
 			<version>${mybatis.version}</version>
 		</dependency>
 		
+		
+		
+			<!-- java.util.logging 实际调用slf4j -->
+		<dependency>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>jul-to-slf4j</artifactId>
+        	<version>${slf4j.version}</version>
+        	<scope>runtime</scope>
+      	</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.lazyluke</groupId>
+			<artifactId>log4jdbc-remix</artifactId>
+			<version>0.2.7</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- LOGGING end -->
 		
 	</dependencies>
 	<build>
