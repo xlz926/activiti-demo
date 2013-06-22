@@ -137,7 +137,7 @@
                 doSize: false,
                 border: (pp.attr('border') == 'false' ? false : true),
                 tools: [{
-                    iconCls: toolCls[dir]
+                    iconCls: region[dir]
                 }]
             });
     	    
@@ -159,7 +159,7 @@
                 });
 
     	     }
-    	return pp;
+    	     panels[dir]=pp;
     },
     _createExpandPanel:function(dir){
     	var icon={
