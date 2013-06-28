@@ -16,8 +16,7 @@
     	src:'lib/ckeditor/ckeditor.js'
     } ,
     'jQuery.metadata':{
-    	src:'lib/validate/jquery.matadata.min.js',
-    	deps:['jQuery.metadata']
+    	src:'lib/validate/jquery.matadata.min.js'
     },
     'jQuery.validate':{
     	src:'lib/validate/jquery.validate.min.js',
