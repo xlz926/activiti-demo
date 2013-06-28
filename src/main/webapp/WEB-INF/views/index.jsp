@@ -32,7 +32,10 @@
 
      <div region="west" split="true" title="West" style="width:100px;"></div>  
 
-    <div region="center" title="center title"  split="true"  ></div>  
+    <div region="center" title="center title"  split="true"  >
+                当前序号：${testI} 
+    
+    </div>  
 
  </div> 
 </body>
@@ -40,8 +43,14 @@
 
 <script>
     $(function () {
-        $("#layoutDemo").layout();
-
+      var a =8 ;
+      
+      setInterval(function(){
+    	  console.log(a);
+    	  a=99;
+    	  console.log(a);
+      },1);
+        a=888
     })
 
 </script>

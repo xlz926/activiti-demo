@@ -21,6 +21,7 @@
 		<spymemcached.version>2.8.1</spymemcached.version>
 		<slf4j.version>1.7.1</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		<activiti.version>5.14-SNAPSHOT</activiti.version>
 			<!-- 项目数据库属性 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
@@ -29,6 +30,27 @@
 	 
 	<dependencies>
 	
+	<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-engine</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-bpmn-model</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-bpmn-converter</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
 	<!-- srping 框架依赖包 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -216,6 +238,37 @@
 		<!-- LOGGING end -->
 		
 	</dependencies>
+	
+	
+	
+	
+	
+	
+	
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>Team Nexus Repository</name>
+			<url>http://gzsvn.pousheng.com:8081/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Activiti</id>
+			<name>Activiti</name>
+			<url>https://maven.alfresco.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	
+	
+	
+	
+	
 	<build>
 		<plugins>
 			<plugin>

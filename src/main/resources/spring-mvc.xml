@@ -15,31 +15,13 @@
 	</bean>
 
 
-    <context:component-scan base-package="com.activiti.demo" />
-    <!-- enable autowire -->
-    <context:annotation-config />
+    <context:component-scan base-package="com.activiti.demo.web" />
 
-  <mvc:annotation-driven></mvc:annotation-driven>    
+    <mvc:annotation-driven></mvc:annotation-driven>    
     
 	<!-- 定义无Controller的path<->view直接映射 -->
 	<mvc:view-controller path="/" view-name="redirect:index" />
 	
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<!-- 有人跟踪@ResponseBody 的实现类发现其默认的编码是 iso-8859-1,这样通过配置AnnotationMethodHandlerAdapter类messageConverters属性来指定编码。解决中文乱码 -->
-				<bean id="utf8StringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
-					<property name="supportedMediaTypes">
-						<list>
-							<value>text/plain;charset=UTF-8</value>
-						</list>
-					</property>
-				</bean>
-
-			</list>
-		</property>
-
-	</bean>
 	
 	<!-- 访问静态文件 -->
 	<mvc:resources mapping="/js/**" location="/js/" />
