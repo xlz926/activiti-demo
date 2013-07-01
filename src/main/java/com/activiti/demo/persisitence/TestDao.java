@@ -1,10 +1,12 @@
 package com.activiti.demo.persisitence;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
-import com.activiti.demo.domain.Test;
+import com.activiti.demo.domain.TestModel;
 
 
-public interface TestDao extends CrudRepository<Test,Long>{
+@Component
+public interface TestDao extends CrudRepository<TestModel,Long>{
 
 }

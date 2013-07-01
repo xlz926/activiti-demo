@@ -22,19 +22,12 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
 		<property name="packagesToScan" value="com.activiti.demo.domain"/>
-		<property name="jpaProperties">
-			<props>
-				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
-				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
-				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-			</props>
-		</property>
 	</bean>
 
 	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 
 	<!-- Spring Data Jpa配置 -->
-	<jpa:repositories base-package="me.kafeitu.demo.activiti" transaction-manager-ref="transactionManager"
+	<jpa:repositories base-package="com.activiti.demo" transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- Jpa 事务配置 -->
@@ -76,17 +69,16 @@
 	<!-- unit test环境 -->
 	<beans profile="test">
 		<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath:/application.properties,
-					  classpath:/application.test.properties,
-          			  classpath:/application.test.local.properties" />
+			location=" classpath:/application.test.properties" />
 
 		<!-- 嵌入式内存中数据库 -->
-		<jdbc:embedded-database id="dataSource" type="H2">
-			<jdbc:script location="classpath:sql/h2/schema.sql" />
-			<jdbc:script location="classpath:org/activiti/db/create/activiti.h2.create.engine.sql" />
-			<jdbc:script location="classpath:org/activiti/db/create/activiti.h2.create.history.sql" />
-			<jdbc:script location="classpath:org/activiti/db/create/activiti.h2.create.identity.sql" />
-		</jdbc:embedded-database>
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
 
 		
 	</beans>
