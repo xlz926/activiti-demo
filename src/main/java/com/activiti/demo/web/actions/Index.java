@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class Index {
+public  class Index {
      
      
     static int i =0; 
@@ -44,7 +44,7 @@ public class Index {
 		Context.setProcessEngineConfiguration(processEngineFactoryBean.getProcessEngineConfiguration());
 		
 		model.addAttribute("testI",repositoryService.getModel("331").getMetaInfo());
-
+		
 		return "index";
 	}
 	
