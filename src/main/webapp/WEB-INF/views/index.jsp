@@ -33,12 +33,12 @@
 
      <div region="west" split="true" title="左侧导航" style="width:150px;">
          
-     <ul id="treeDemo" class="ztree"></ul>
+        <ul id="treeDemo" class="ztree"></ul>
      </div>  
 
     <div region="center"   split="true"  >
        <div id="navTab">
-       <div title ="首页"></div>
+          <div title ="首页"></div>
        
        </div>
 
