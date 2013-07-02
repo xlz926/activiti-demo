@@ -15,15 +15,15 @@
 	</bean>
 
 
-    <context:component-scan base-package="com.activiti.demo.web" />
+    <context:component-scan base-package="com.activiti.demo" />
 
     <mvc:annotation-driven></mvc:annotation-driven>    
     
 	<!-- 定义无Controller的path<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="redirect:index" />
+	<mvc:view-controller path="/" view-name="redirect:login" />
 	
 	
 	<!-- 访问静态文件 -->
 	<mvc:resources mapping="/js/**" location="/js/" />
-	<mvc:resources mapping="/themes/**" location="/themes/" />
+	<mvc:resources mapping="/style/**" location="/style/" />
 	</beans>
