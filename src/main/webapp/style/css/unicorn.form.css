@@ -1,0 +1,116 @@
+
+.form-area{
+	 padding:20px 0px 3px;
+	 background-color: #FFFFFF;
+      border-top:   1px dotted #AEBDC8;
+     border-radius: 4px 4px 4px 4px;
+     display: inline-block;
+     position: relative;
+}
+.form-area:after{
+	background-color: #F5F5F5;
+    border: 1px dotted #DDDDDD;
+    border-width:0px 1px 1px 0px;
+    border-radius: 0px 0px 4px 0px;
+    color: #9DA0A4;
+    content: attr(title);
+    font-size: 12px;
+    font-weight: bold;
+    left:0px;
+    top:0px;
+    padding: 1px;
+    position: absolute;
+}
+.page-content{overflow-y:auto;padding: 0px 2px;  }
+.form-area>ul{
+	display: inline-block;
+}
+.form-area>ul>li {
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 0;
+    padding: 6px 0px;;
+    position: relative;
+    width: 290px;
+}
+ 
+.form-area>ul>li>label {
+    float: left;
+    line-height: 20px;
+    padding: 0px;
+    width: 80px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   
+}
+ 
+.form-area>ul>li>input[type="text"] {
+    width: 170px;
+}
+.form-area-hide{
+	height: 0px;
+	overflow: hidden;
+}
+.form-area-hide:after{
+	color: #3A87AD;
+}
+.form-area .showLable{
+	border-bottom: 1px solid #CCCCCC;
+    color: #808080;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 4px;
+    height: 18px;
+    position: absolute;
+    overflow:hidden;
+}
+
+
+.pageForm .pageFormContent input:text {
+    float: left;
+}
+
+.form-area .showLable{
+	border-bottom: 1px solid #CCCCCC;
+    color: #808080;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 4px;
+    height: 18px;
+    position: absolute;
+    overflow:hidden;
+}
+
+
+.scrollspy {
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #E5E5E5; 
+     background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #CDCDCD;
+    clear: both;
+    margin-bottom: 16px;
+    margin-top: 16px;
+   border-top-left-radius: 8px;
+}
+.scrollspy .header {
+    background-color: #EEEEEE;
+    background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+    background-repeat: repeat-x;
+    height: 36px;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    padding-left: 4px;
+}
+.scrollspy .content {
+    overflow: auto;
+}
+.scrollspy > .header .nav {
+    margin-bottom: 0;
+}

@@ -17,3 +17,5 @@
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.navTab.js"></script>  
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.viewform.js"></script>  
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.date.js"></script>  
+<script type="text/javascript" src="${jsPath }/src/ui/viewui.scrollspy.js"></script>  
+<script type="text/javascript" src="${jsPath }/src/ui/viewui.panel2.js"  ></script> 

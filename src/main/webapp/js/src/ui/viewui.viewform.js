@@ -26,7 +26,7 @@
 			}
 		},
 		repalceInput:function(){
-           this.element.find("input:text,input:password").filter(':visible').each(function(){
+           this.element.find("input:text,input:password,textarea").filter(':visible').each(function(){
                 $(this).replaceWith($("<label class='showLable'/>").width($(this).width()).html($(this).val()));
            });
            this.element.find("select").filter(':visible').each(function(){
