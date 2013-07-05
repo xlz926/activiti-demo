@@ -17,7 +17,7 @@
 		<input type="hidden" value="" name="taskState" id="taskState">
 		<input type="hidden" value="" name="sendAccount"> <!-- 送审人账号 -->
 			<ul>
-				<li><label class="red">开始时间：</label> <input type="text" value="20121212" validate="{required:true}" id="beginDate" name="beginDate" class="date hasDatepicker"></li>
+				<li><label class="red">开始时间：</label><input type="text" value="20121213343432" validate="{required:true}" id="beginDate" name="beginDate" class="date hasDatepicker"></li>
 				<li><label class="red">结束时间：</label> <input type="text" value="20121212" validate="{required:true}" id="endDate" name="endDate" class="date hasDatepicker"></li>
 				<li><label class="red">出差天数：</label> <input type="text" value="20121212" validate="{required:true,number:true,min:0}" name="eDays" id="eDays"></li>
 				<li><label class="red">单据张数：</label> <input type="text" value="20121212" validate="{number:true,min:0,digits:true,required:true}" name="affixNo" id="affixNo"></li>

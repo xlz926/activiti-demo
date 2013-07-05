@@ -18,7 +18,7 @@ public class EditAction {
 		
 		model.addAttribute("billNo", "自动生成");
 		
-		model.addAttribute("permission", "011111");
+		model.addAttribute("permission", "111111");
 		return "forms/explane/editform";
 	}
     

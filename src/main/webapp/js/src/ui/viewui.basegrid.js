@@ -197,7 +197,6 @@
                 opts =this.options;
 
             if (!opts.url) {
-            	this.opts.data.dataList=[];
             	return;
             }
            

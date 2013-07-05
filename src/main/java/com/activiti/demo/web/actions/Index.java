@@ -1,7 +1,5 @@
 package com.activiti.demo.web.actions;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -40,10 +38,6 @@ public  class Index {
 
 	@RequestMapping(value = "/index", method = { RequestMethod.GET, RequestMethod.POST })
 	public String userIndex(HttpServletRequest request,HttpSession session,Model model) {
-		session.setAttribute(i+"", "fdfdfdf");
-		Context.setProcessEngineConfiguration(processEngineFactoryBean.getProcessEngineConfiguration());
-		
-		model.addAttribute("testI",repositoryService.getModel("331").getMetaInfo());
 		
 		return "index";
 	}

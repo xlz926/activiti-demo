@@ -61,8 +61,8 @@
 					<a href="#"><i class="icon icon-th-list"></i> <span>财务类</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="forms/explane/edit">费用报销</a></li>
-						<li><a href="form-validation.html">差旅费用</a></li>
-						<li><a href="form-wizard.html">交际费用</a></li>
+						<li><a href="engine/addTemplate">流程部署</a></li>
+						<li><a href="engine/listTemplate">模板列表</a></li>
 					</ul>
 				</li>
 				<li><a href="buttons.html"><i class="icon icon-tint"></i> <span>资产类</span></a></li>

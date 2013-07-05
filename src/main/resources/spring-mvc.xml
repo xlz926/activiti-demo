@@ -23,6 +23,8 @@
 	<mvc:view-controller path="/" view-name="redirect:login" />
 	
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
 	<!-- 访问静态文件 -->
 	<mvc:resources mapping="/js/**" location="/js/" />
 	<mvc:resources mapping="/style/**" location="/style/" />

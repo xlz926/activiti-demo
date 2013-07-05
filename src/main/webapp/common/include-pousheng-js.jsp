@@ -19,3 +19,4 @@
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.date.js"></script>  
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.scrollspy.js"></script>  
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.panel2.js"  ></script> 
+<script type="text/javascript" src="${jsPath }/src/ui/viewui.basegrid.js"  ></script>

@@ -22,8 +22,9 @@
 		<slf4j.version>1.7.1</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<h2.version>1.3.167</h2.version>
-		<activiti.version>5.12.1</activiti.version>
-			<!-- 项目数据库属性 -->
+		<activiti.version>5.14-SNAPSHOT</activiti.version>
+		
+		<!-- 项目数据库属性 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
 		<jdbc.driver.version>5.1.21</jdbc.driver.version>
@@ -101,7 +102,11 @@
 			<artifactId>jackson-core-lgpl</artifactId>
 			<version>1.9.9</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-lgpl</artifactId>
+			<version>1.9.9</version>
+		</dependency>
 		
 		
 		
