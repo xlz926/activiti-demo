@@ -108,8 +108,6 @@
 			 $(this).viewform();
 		  }
 	  });
-	  
-	  form.scrollspy({selector:'.form-area'});
 	});
 	
 	
