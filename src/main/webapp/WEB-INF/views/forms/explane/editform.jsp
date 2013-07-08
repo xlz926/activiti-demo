@@ -108,6 +108,25 @@
 			 $(this).viewform();
 		  }
 	  });
+	  
+      var  box =  $('<div class="box-tab corner-all">'+
+                                       ' <div class="box-header corner-top">'+
+                                          '  <div class="header-control pull-right">'+
+                                               ' <a data-box="collapse"><i class="icofont-caret-up"></i></a>'+
+                                                '<a data-hide="rotateOutDownLeft" data-box="close">×</a>'+
+                                            '</div>'+
+                                            '<ul class="nav nav-pills">'+
+                                                '<li class="active"><a href="#recent-orders" data-toggle="tab">Recent Orders</a></li>'+
+                                            '</ul>'+
+                                        '</div>'+
+                                        '<div class="box-body">'+
+                                        '</div><!--/box-body-->'+
+                                    '</div>');  
+      
+     box.insertAfter(form).find('.box-body').append(form);;
+   
+	  
+	  
 	});
 	
 	

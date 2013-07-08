@@ -19,22 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public  class Index {
      
-     
-    static int i =0; 
-    
-    @Autowired
-    ProcessEngineFactoryBean processEngineFactoryBean;
-
-
-    
-    @Autowired
-    protected RuntimeService runtimeService;
-    
-    @Autowired
-    protected RepositoryService repositoryService;
-    
-    @Autowired
-    protected IdentityService identityService;
 
 	@RequestMapping(value = "/index", method = { RequestMethod.GET, RequestMethod.POST })
 	public String userIndex(HttpServletRequest request,HttpSession session,Model model) {

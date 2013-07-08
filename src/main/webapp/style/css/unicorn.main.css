@@ -42,23 +42,8 @@ a:hover {
 #search {
 	position: absolute;
 	z-index: 25;
-	top: 6px;
-	left: 230px;
-}
-#search input[type=text] {
-	border-radius: 4px 0 0 4px;
-	padding: 4px 10px 5px;
-	border: 0;
-	box-shadow: 2px 2px 3px rgba(0,0,0,0.7) inset, 0 1px 0 rgba(255,255,255,0.2); 
-	width: 100px;
-}
-
-#search button {
-	border: 0;
-	margin-top: -11px;
-	padding: 5px 10px 4px;
-	border-radius: 0 4px 4px 0;
-	box-shadow: -2px 2px 3px rgba(0,0,0,0.7) inset, 0 1px 0 rgba(255,255,255,0.2); 
+	top: 4px;
+	right: 20px;
 }
 #search button i {
 	opacity: 0.5;
@@ -253,9 +238,11 @@ a:hover {
 #breadcrumb {
 	background-color: #e5e5e5;
 	box-shadow: 0 0 1px #ffffff;
-	border-top: 1px solid #d6d6d6;
 	border-bottom: 1px solid #d6d6d6;
 	padding-left: 10px;
+	background-image: -moz-linear-gradient(center top , #FFFFFF 0%, #EEEEEE 100%);
+    border-top-left-radius: 8px;
+     margin-top: -28px;
 }
 #breadcrumb a {
 	padding: 8px 20px 8px 10px;
@@ -720,6 +707,7 @@ a:hover {
 	margin: 0;
 	padding: 0;
 }
+
 .recent-posts li, .recent-comments li, .article-post li, .recent-users li {
     border-bottom: 1px dotted #AEBDC8;
     list-style: none outside none;
@@ -735,12 +723,13 @@ a:hover {
 	color: #888888;
 }
 .recent-posts li.viewall a:hover, .recent-comments li.viewall a:hover, .recent-users li.viewall a:hover {
-	background-color: #eeeeee;
+
 }
 
 .recent-posts li:last-child, .recent-comments li:last-child, .recent-users li:last-child {
     border-bottom: none !important;
 }
+
 
 .user-thumb {
     background: none repeat scroll 0 0 #FFFFFF;

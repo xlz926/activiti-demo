@@ -121,5 +121,20 @@ $(document).ready(function(){
 		$(this).siblings('a').css({'border-color':'transparent'});
 		$(this).css({'border-color':'#aaaaaa'});
 	});
+	
+	
+	
+	
+
+	
+	$.get("engine/getToDoList",function(data){
+		
+     $(".recent-posts").html($("#viewListTemplate").render(data));
+			
+	 $(".recent-posts li:even").css("margin-left","0px");
+	});
+
+	
+	
 });	
 
