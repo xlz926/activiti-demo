@@ -87,7 +87,7 @@
             
            
             
-            opts.closeBtn && $("<a class='modal_close button'>").click(function(event){
+            opts.closeBtn && $("<a class='modal_close button'/>").click(function(event){
             	that.close(event);
             }).appendTo(btns);
            // mheader.prepend('<button type="button" class="titleBar close">&times;</button>');

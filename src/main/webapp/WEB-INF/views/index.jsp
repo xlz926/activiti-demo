@@ -20,9 +20,11 @@
  
     
  <link href="${basePath }/style/css/unicorn.main.css" rel="stylesheet" media="screen">
- <link href="${basePath }/style/css/unicorn.grey.css" rel="stylesheet"  class="skin-color" media="screen">
+ <link href="${basePath }/style/css/unicorn.white.css" rel="stylesheet"  class="skin-color" media="screen">
  <link href="${basePath }/style/css/unicorn.form.css" rel="stylesheet"  class="skin-color" media="screen">
  
+ <link href="${basePath }/style/css/font-awesome.css" rel="stylesheet"  class="skin-color" media="screen">
+ <link href="${basePath }/style/css/stilearn-helper.css" rel="stylesheet"  class="skin-color" media="screen">
      <!-- 开发平台地址 -->
 <script src="${jsPath }/lib/seajs/sea.js"
         data-config="${jsPath }/lib/seajs/config.js"
@@ -101,48 +103,71 @@
 				<a href="#" class="current">待办</a>
 			</div>
 			<div class="container-fluid" id="container">
-				<div class="row-fluid">
+				<div class="row-fluid" >
 					<div class="span12 center" style="text-align: center;">					
-						<ul class="stat-boxes">
+					
+					
+	         <ul class="quick-actions-horizontal">
 							<li>
-								<div class="left peity_bar_good"><span>2,4,9,7,12,10,12</span>+20%</div>
-								<div class="right">
-									<strong>36094</strong>
-									待办
-								</div>
+								<a href="#">
+									<i class="icon-calendar"></i>
+									<span>Manage Events</span>
+								</a>
 							</li>
 							<li>
-								<div class="left peity_bar_neutral"><span>20,15,18,14,10,9,9,9</span>0%</div>
-								<div class="right">
-									<strong>1433</strong>
-									已办
-								</div>
+								<a href="#">
+									<i class="icon-shopping-bag"></i>
+									<span>Manage Orders</span>
+								</a>
 							</li>
 							<li>
-								<div class="left peity_bar_bad"><span>3,5,9,7,12,20,10</span>-50%</div>
-								<div class="right">
-									<strong>8650</strong>
-									搁置
-								</div>
+								<a href="#">
+									<i class="icon-database"></i>
+									<span>Manage DB</span>
+								</a>
 							</li>
 							<li>
-								<div class="left peity_line_good"><span>12,6,9,23,14,10,17</span>+70%</div>
-								<div class="right">
-									<strong>8650</strong>
-									关注
-								</div>
+								<a href="#">
+									<i class="icon-people"></i>
+									<span>Manage Users</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="icon-lock"></i>
+									<span>Security</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="icon-piechart"></i>
+									<span>Statistics</span>
+								</a>
 							</li>
 						</ul>
+				<form class="form-search hide" id="indexSearch">
+						<ul class="nav">
+					<li class="span3"><label>单据编号</label>
+					<input type="text" />
+					</li>	
+					<li class="span3">
+					<label>单据名称</label>
+					<input type="text" />
+					</li>
+					
+					</ul>
+					</form>
 					</div>	
 				</div>
+			
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="widget-box">
 							<div class="widget-title"><span class="icon"><i class="icon-file"></i></span><h5>待办列表</h5>
-		<div class="input-append" id="search">
+		<div class="input-append dropup" id="search">
   <input class="span6" id="appendedInput" type="text">
   <button class="btn"><i class="icon-search"></i>搜索</button>
-  <button class="btn "  type="button">高级</button>
+   <button class="btn advice" >高级查询<b class="caret"></b></button>
 </div>
 		
 		</div>

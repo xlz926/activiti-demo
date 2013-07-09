@@ -135,6 +135,17 @@ $(document).ready(function(){
 	});
 
 	
-	
+	$("#container").on("click","#search .advice",function(){
+		var search = $(this).closest("#search");
+		if(search.hasClass("dropup")){
+		   $("#indexSearch").show().siblings("#indexNav").hide();
+		   search.removeClass("dropup");
+		}else{
+			$("#indexSearch").hide().siblings("#indexNav").show();;
+			 search.addClass("dropup");
+		}
+		
+		
+	});
 });	
 

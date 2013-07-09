@@ -130,9 +130,7 @@ a:hover {
 	position: relative;
 }
 
-#sidebar > ul > li.active {
-	box-shadow: 0 2px 4px rgba(0,0,0,0.2) inset;
-}
+
 
 #sidebar > ul > li > a {
 	padding: 10px 0 10px 15px;
@@ -251,7 +249,6 @@ a:hover {
 	background-position: center right;
 	background-repeat: no-repeat;
 	font-size: 11px;
-	color: #666666;
 }
 #breadcrumb a:hover {
 	color: #333333;
@@ -261,7 +258,7 @@ a:hover {
 }
 #breadcrumb a.current {
 	font-weight: bold;
-	color: #444444;
+	color: #ssss;
 }
 #breadcrumb a i {
 	margin-right: 5px;
@@ -280,7 +277,7 @@ a:hover {
 	background-color: #000000;
 	z-index: 40;
 	right: 0;
-	top: 123px;
+	top: 54px;
 	border-radius: 5px 0 0 5px;
 	margin-right: -190px;
 }
