@@ -6,111 +6,29 @@
  <!DOCTYPE html>
 <html lang="en">
 	<head>
-	 <%@ include file="/resource/meta.jsp" %>
-    <%@ include file="/resource/global.jsp" %>
-	 <%@ include file="/resource/include-base-styles.jsp" %>
+	 <%@ include file="/common/meta.jsp" %>
+    <%@ include file="/common/global.jsp" %>
+	 <%@ include file="/common/include-base-styles.jsp" %>
 	 
 	 <link href="${jsPath }/module/design/wui.toolbar.css" rel="stylesheet">
+	 
+	 <link href="${jsPath }/src/themes/default/pousheng.css" rel="stylesheet">
+	 
+	   <%@ include file="/common/include-plugin-js.jsp" %>
 
-	   <%@ include file="/resource/include-plugin-js.jsp" %>
+  <%@ include file="/common/include-pousheng-js.jsp" %>
 
-	 <link href="${jsPath }pousheng/themes/default/pousheng.css" rel="stylesheet">
-    <script type="text/javascript" src="${jsPath }pousheng/pousheng.ui.js"> </script>
-	   
-	   
-	   
-      	<!--jquery 模板-->
-<script type="text/javascript" src="${jsPath}/lib/jsview/jquery.observable.js"></script>
-<script type="text/javascript" src="${jsPath}/lib/jsview/jquery.views.js"></script>
-	   
     <!-- 开发平台地址 -->
 <script src="${jsPath }/lib/seajs/sea.js"
         data-config="${jsPath }/lib/seajs/config.js"
         data-main="${jsPath }/module/design/main.js"></script> 
 
-   <style>
- #properSetings .group>ul>li {width: 290px; display: block;
-    float: left;
-    height: 24px;
-    margin: 0;
-    padding: 6px 0;}
- #properSetings .group>ul>li>label{width: 70px; float: left;
-    line-height: 24px;
-    overflow: hidden;
-    padding: 0;
-    text-align: left;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 80px;}
- #properSetings input:text{ float: left;}
-   </style>
-	
-	<script type="text/javascript">
-		function loginOut(){
-			 pousheng.confirm("&nbsp;&nbsp;确定要注销吗?",function(r){
-    	    	 if(r){
-    	    		 window.parent.location.href="logout";
-    	    	 }else{
-    	    		 $(this).dialog("close");
-    	    	 }
-    	    });
-		}
-	</script>
 	<title>流程模板设计</title>
 	</head>
 	<body>
-			<div id="indexLayout" style="height: 100%;">
-				<div region="north" border="false"
-					style="height: 110px;">
-
-              <div id="topPanel">
-						<div class="logo-sets">
-							<img alt="logo" src="themes/img/toplogo.png" id="logo">
-						</div>
-						<div class="topBanner">
-					      <div class="exit">
-								<i class="icon-off icon-white"></i> <a
-									href="javascript:loginOut()" style="color: #FFFFFF">注销</a>
-							</div>
-							<div class="splitter"></div>
-							<div class="exit">
-								<i class="icon-qrcode icon-white"></i> <a href="${basePath }/index"
-									style="color: #FFFFFF" target="_blank">返回首页</a>
-							</div>
-							<div class="splitter"></div>
-							<div class="user-info">
-								<i class="icon-user icon-white"></i> <font color="#FFFFFF">${username}</font>
-							</div>
-							<div class="splitter"></div>
-							<div class="user-info">
-								<c:choose>
-									<c:when
-										test="${not empty currentLoginType and currentLoginType eq '1'}">
-										<i class="icon-pencil icon-white"></i>
-										<a href="https://password.pousheng.com/"
-											style="color: #FFFFFF" target="_blank">修改域密码</a>
-									</c:when>
-									<c:otherwise>
-										<!-- 
-								<a href="javascript:modifyPassWord();" style="color: #FFFFFF">修改密码</a>
-								 -->
-									</c:otherwise>
-								</c:choose>
-							</div>
-							<!--
-					<div class="splitter"></div>
-					<div class="user-info">
-						 
-						<i class="icon-tag icon-white"></i>
-						<a href="javascript:perfectInfo();" style="color: #FFFFFF">个人资料</a>
-					</div>
-					<div class="splitter"></div>
-					-->
-						</div>
-					</div>
-					
-
-					<div id="application-toolbar" class="wui-toolbar">
+	
+	
+		<div id="application-toolbar" class="wui-toolbar">
 						<ul>
 							<li class="toolbarGroup">
 								<ul>
@@ -183,84 +101,6 @@
 						</ul>
 					</div>
 
-
-
-
-				</div>
-				<div region="east" id="properSetings"  closed="true"
-				 split="true" title="属性设置"
-					style="width: 320px;"></div>
-			<div id="palette"  region="west" style="width: 190px;">
-             <div data-tabs>
-				<div id="myPalette" title="基本活动">
-				</div>
-
-				   <div id="myPaletteGroup"  title="组合活动">
-				   </div>	
-				</div>
-			</div>
-				<div region="center">
-					<div id="flowTabs"></div>
-				</div>
-				<div  region="south" style="height:30px;">
-				<div id="footer">POUSHENG All Rights Reserved.[ Version 2.17 ]</div>
-				</div>
-			</div>
-
-	
-
-
-		<div style="width: 400px" class="hide">
-			<div id="helper" data-tabs>
-				<div title="表达式操作">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>操作符名称</th>
-								<th>操作符</th>
-								<th>例子</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>大于</td>
-								<td>&gt;</td>
-								<td>
-									<%
-										out.print("${approve>0}");
-									%>
-								</td>
-							</tr>
-							<tr>
-
-								<td>小于</td>
-								<td>&gt;</td>
-								<td>
-									<%
-										out.print("${approve>0}");
-									%>
-								</td>
-							</tr>
-							<tr>
-								<td>等于</td>
-								<td>&gt;</td>
-								<td>
-									<%
-										out.print("${approve>0}");
-									%>
-								</td>
-							</tr>
-						</tbody>
-
-					</table>
-
-				</div>
-			</div>
-
-		</div>
-
-
-	
 </body>
 </html>
 <c:import url="template.jsp"></c:import>

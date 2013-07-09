@@ -34,11 +34,11 @@ define(function(require, exports, module) {
 	
 	
 	
-    require('module/design/workflow.init');
+   // require('module/design/workflow.init');
 
 	
 
-	seajs.use('module/common/common'); 
+
 	
 	
 
@@ -236,16 +236,9 @@ define(function(require, exports, module) {
 		           });
 		        }
 		    });
-	       $.extend($.validator.messages,pousheng.getI18N('validator.messages'));
-	      seajs.use("module/common/validate");
 	});
       
       
-    //初始化国际化文件
-	var i18n_common = pousheng.getI18N('common');
-	$.extend(true,btn,i18n_common.btn);
-	$.extend(true,txt,i18n_common.txt);
-	var i18n_msg = pousheng.getI18N('msg');
-	$.extend(true,msg,i18n_msg);
+
 	
 });

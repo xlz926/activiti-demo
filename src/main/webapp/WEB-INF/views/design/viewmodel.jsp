@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查看流程图</title>
-<%@ include file="/resource/meta.jsp"%>
-<%@ include file="/resource/global.jsp"%>
-    <%@ include file="/resource/include-base-styles.jsp" %>
+<%@ include file="/common/meta.jsp"%>
+<%@ include file="/common/global.jsp"%>
+    <%@ include file="/common/include-base-styles.jsp" %>
 
     <!-- 开发平台地址 -->
 <script src="${jsPath }/lib/seajs/sea.js"

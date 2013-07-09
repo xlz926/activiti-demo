@@ -64,7 +64,7 @@
 						<li><a href="engine/listTemplate">模板列表</a></li>
 					</ul>
 				</li>
-				<li><a href="buttons.html"><i class="icon icon-tint"></i> <span>资产类</span></a></li>
+				<li><a href="design/index"><i class="icon icon-tint"></i> <span>流程建模</span></a></li>
 				<li><a href="interface.html"><i class="icon icon-pencil"></i> <span>数据库类</span></a></li>
 				<li><a href="tables.html"><i class="icon icon-th"></i> <span>流程管理</span></a></li>
 				<li><a href="grid.html"><i class="icon icon-th-list"></i> <span>流程管理</span></a></li>

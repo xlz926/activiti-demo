@@ -9,6 +9,7 @@
 <script type="text/javascript" src="${jsPath}/lib/jsview/jsrender.min.js"> </script>
 <script type="text/javascript" src="${jsPath}/lib/jsview/jquery.observable.js"> </script>
 <script type="text/javascript" src="${jsPath}/lib/jsview/jquery.views.js"> </script>
+<script type="text/javascript" src="${jsPath}/lib/extend/jquery.livequery.js"> </script>
 
 
 
