@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.activiti.demo.persisitence.form.OaLeverMapper">
+
+	<resultMap id="oa_leverMap" type="com.activiti.demo.domain.form.OaLever">
+          <result property="billNo" column="BILL_NO" />
+          <result property="days" column="DAYS" />
+          <result property="startTime" column="START_TIME" />
+          <result property="endTime" column="END_TIME" />
+          <result property="exactUser" column="EXACT_USER" />
+          <result property="applyUser" column="APPLY_USER" />
+          <result property="updateTime" column="UPDATE_TIME" />
+          <result property="creatTime" column="CREAT_TIME" />
+	</resultMap>
+    
+    
+    
+	<!-- definde common column -->
+	<sql id="base_column">
+          "BILL_NO" ,
+          "DAYS" ,
+          "START_TIME" ,
+          "END_TIME" ,
+          "EXACT_USER" ,
+          "APPLY_USER" ,
+          "UPDATE_TIME" ,
+          "CREAT_TIME" 
+	</sql>
+    
+
+	<select id="findOaLeverByPK" resultMap="oa_leverMap">
+		SELECT
+		<include refid="base_column" />
+		FROM form_oa_lever
+        WHERE 
+            BILL_NO = #{BillNo,jdbcType=Int64} 
+	</select>
+	
+
+
+	<select id="queryOaLever" resultMap="oa_leverMap"  >
+		SELECT
+		<include refid="base_column" />
+		FROM form_oa_lever
+	</select>
+
+	<delete id="deleteOaLeverByPK">
+		DELETE FROM form_oa_lever
+		WHERE
+              BILL_NO = #{billNo,jdbcType=Int64} 
+	</delete>
+    
+    
+    <insert id="insertOaLever"  parameterType="OaLever" >
+    <selectKey keyProperty="billNo" resultType="Long" order="BEFORE">
+     select IFNULL(MAX(BILL_NO),1)+1 billNo from form_oa_lever 
+    </selectKey>
+     insert into form_oa_lever 
+            (
+              BILL_NO,
+              DAYS,
+              START_TIME,
+              END_TIME,
+              EXACT_USER,
+              APPLY_USER,
+              UPDATE_TIME,
+              CREAT_TIME
+            )
+    values ( 
+            #{billNo},
+            #{days},
+            #{startTime},
+            #{endTime},
+            #{exactUser},
+            #{applyUser},
+            #{updateTime},
+            #{creatTime}
+           )
+    </insert>
+    
+    
+    <update id="updateOaLever">
+     update  form_oa_lever 
+     set  
+          DAYS = #{days},  
+          START_TIME = #{startTime},  
+          END_TIME = #{endTime},  
+          EXACT_USER = #{exactUser},  
+          APPLY_USER = #{applyUser},  
+          UPDATE_TIME = #{updateTime},  
+          CREAT_TIME = #{creatTime}  
+     where
+          BILL_NO = #{BillNo} 
+    
+    </update>
+    
+    
+    
+</mapper>

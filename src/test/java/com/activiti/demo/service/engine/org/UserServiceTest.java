@@ -37,7 +37,7 @@ public class UserServiceTest extends SpringTransactionalTestCase {
 	public void ProcessEngineFactoryBean() {
 		
 		User user = new UserEntity();
-		user.setId("1liezun2133211213212");
+		user.setId("133liezun2133211213212");
 		user.setEmail("380528634@qq.com");
 		user.setPassword("123543543");
 		identityService.saveUser(user);

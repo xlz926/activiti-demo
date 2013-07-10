@@ -13,6 +13,28 @@
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
-
+    
+    
+      <!-- scan for mappers and let them be autowired -->
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="typeAliasesPackage" value="com.activiti.demo.domain"/>
+		<!-- 显式指定Mapper文件位置 -->
+		<property name="mapperLocations" value="classpath:com/activiti/demo/db/mapper/entity/*.xml" />
+	</bean>
+	<!-- 扫描basePackage下所有 接口-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.activiti.demo.persisitence" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+    
   	<import resource="classpath*:/activiti-context.xml" />
+  	
+  	
+  	<context:component-scan base-package="com.activiti.demo" > 
+  	   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+  	</context:component-scan>
+  	
 </beans>

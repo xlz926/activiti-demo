@@ -60,7 +60,15 @@
 			<property name="username" value="${jdbc.username}" />
 			<property name="password" value="${jdbc.password}" />
 		</bean>
-
+       
+      <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+          <property name="basePackage" value="com.activiti.demo.db.mapper.entity" />
+      </bean>
+      
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="com.activiti.demo.domain" />
+    </bean>
 		
 	</beans>
 </beans>
