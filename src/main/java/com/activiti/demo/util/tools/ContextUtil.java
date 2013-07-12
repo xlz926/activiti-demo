@@ -16,7 +16,7 @@ public class ContextUtil implements ApplicationContextAware {
 			throws BeansException {
 		this.applicationContext = applicationContext;
 	}
-	public static <T> T getService(String name,Class<T> cls) {
+	public static <T> T getBean(String name,Class<T> cls) {
 		return applicationContext.getBean(name,cls);
 	}
 }

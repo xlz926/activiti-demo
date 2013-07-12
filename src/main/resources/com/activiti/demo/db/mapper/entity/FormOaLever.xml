@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.activiti.demo.persisitence.form.OaLeverMapper">
+<mapper namespace="com.activiti.demo.persisitence.form.OaLeaveMapper">
 
-	<resultMap id="oa_leverMap" type="com.activiti.demo.domain.form.OaLever">
+	<resultMap id="oaLeaveMap" type="com.activiti.demo.domain.form.OaLeave">
           <result property="billNo" column="BILL_NO" />
           <result property="days" column="DAYS" />
           <result property="startTime" column="START_TIME" />
@@ -30,7 +30,7 @@
 	</sql>
     
 
-	<select id="findOaLeverByPK" resultMap="oa_leverMap">
+	<select id="singleOaLever" resultMap="oaLeaveMap">
 		SELECT
 		<include refid="base_column" />
 		FROM form_oa_lever
@@ -40,7 +40,7 @@
 	
 
 
-	<select id="queryOaLever" resultMap="oa_leverMap"  >
+	<select id="queryOaLever" resultMap="oaLeaveMap"  >
 		SELECT
 		<include refid="base_column" />
 		FROM form_oa_lever
@@ -53,7 +53,7 @@
 	</delete>
     
     
-    <insert id="insertOaLever"  parameterType="OaLever" >
+    <insert id="insertOaLever"  parameterType="OaLeave" >
     <selectKey keyProperty="billNo" resultType="Long" order="BEFORE">
      select IFNULL(MAX(BILL_NO),1)+1 billNo from form_oa_lever 
     </selectKey>

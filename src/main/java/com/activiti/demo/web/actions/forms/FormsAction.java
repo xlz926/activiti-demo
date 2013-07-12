@@ -1,23 +1,20 @@
 package com.activiti.demo.web.actions.forms;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-import com.activiti.demo.service.form.Formservice;
 import com.activiti.demo.service.form.FormContext;
-import com.activiti.demo.util.tools.ContextUtil;
-import com.activiti.demo.web.model.engine.OaLeverModel;
 
+
+@Controller
 public class FormsAction {
     
 	@Autowired
-	FormContext context;
+    protected	FormContext formContext;
 
+	public static final String CONTROLLER_ADD_FORM = "addForm", CONTROLLER_SAVE = "save", CONTROLLER_SAVE_PRO = "savePro",CONTROLLER_EDIT_FORM="edit";
+    
+	
+	
 
-    public void SaveForm(String name){
-    
-    	OaLeverModel oaLeverModel=new OaLeverModel();
-    	//context.saveForm(ContextUtil.getService(name,Formservice.class), oaLeverModel);
-    	
-    }
-    
 }

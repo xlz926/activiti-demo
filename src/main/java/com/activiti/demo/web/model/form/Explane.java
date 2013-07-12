@@ -1,6 +1,6 @@
 package com.activiti.demo.web.model.form;
 
-public class Explane extends FormModelBase {
+public class Explane {
 
        private String value;
 
@@ -12,4 +12,8 @@ public class Explane extends FormModelBase {
 		this.value = value;
 	}
 	
+         public void print(){
+
+		System.out.println("-------------扩展类----------");
+	}
 }

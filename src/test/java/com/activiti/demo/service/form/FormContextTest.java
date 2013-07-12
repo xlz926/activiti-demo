@@ -1,4 +1,4 @@
-package com.activiti.demo.persisitence.form;
+package com.activiti.demo.service.form;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +11,23 @@ import com.activiti.demo.domain.form.OaLeave;
 
 
 @ContextConfiguration(locations = { "/applicationContext.xml" })
-public class OaLeverMapperTest extends SpringTransactionalTestCase {
-    @Autowired
-	OaLeaveMapper oaLeverMapper;
+public class FormContextTest extends SpringTransactionalTestCase {
+
+	
+	@Autowired
+    protected	FormContext formContext;
 	
 	@Test
 	@Rollback(false)
-	public void insertOaLever() {
-		
+	public void saveForm() {
 		try {
-			OaLeave oaLever =new OaLeave();
-			oaLever.setBillNo((long) 111111);
-		 System.out.println(oaLeverMapper.insertOaLever(oaLever));	
+			OaLeave  oa =new OaLeave();
+			oa.setDays((double) 5);
+			formContext.saveForm("oaLeaveService", oa );
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
-		
-		
 	}
 
 }

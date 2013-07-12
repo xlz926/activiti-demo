@@ -1,14 +1,20 @@
 package com.activiti.demo.service.form;
 
+import java.util.List;
+
 
 
 public interface Formservice<T> {
 
 	
-	void saveForm(T t);
+	int saveForm(T t);
+
+	int deleteForm(T t);
 	
-	void submitForm();
+	T viewForm(T t);
 	
+	List<T> viewForms();
+   
 	
 	
 }

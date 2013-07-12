@@ -3,9 +3,11 @@ package com.activiti.demo.domain.form;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 
-public class OaLever implements Serializable  {
+
+public class OaLeave implements Serializable  {
 	
     /**
 	 * 
@@ -13,11 +15,19 @@ public class OaLever implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	private Long billNo;
     private Double days;
+    
+    
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startTime;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endTime;
     private Long exactUser;
     private Long applyUser;
+    
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creatTime;
 	public Long getBillNo() {
 		return billNo;
@@ -31,9 +41,13 @@ public class OaLever implements Serializable  {
 	public void setDays(Double days) {
 		this.days = days;
 	}
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	public Date getStartTime() {
 		return startTime;
 	}
+	
+	
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}

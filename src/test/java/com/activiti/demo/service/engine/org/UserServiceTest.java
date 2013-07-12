@@ -21,7 +21,7 @@ import com.activiti.demo.base.spring.SpringTransactionalTestCase;
  * @author Administrator
  *
  */
-@ContextConfiguration(locations = { "/applicationContext-test.xml" })
+@ContextConfiguration(locations = { "/applicationContext.xml" })
 public class UserServiceTest extends SpringTransactionalTestCase {
 
 	
@@ -36,11 +36,6 @@ public class UserServiceTest extends SpringTransactionalTestCase {
 	@Rollback(false)
 	public void ProcessEngineFactoryBean() {
 		
-		User user = new UserEntity();
-		user.setId("133liezun2133211213212");
-		user.setEmail("380528634@qq.com");
-		user.setPassword("123543543");
-		identityService.saveUser(user);
 		
 	}
 
