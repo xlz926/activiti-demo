@@ -21,4 +21,9 @@ public class Common {
 	public String getToolbar(HttpServletRequest request){
 		return "forms/toolbar";
 	}
+	
+	@RequestMapping(value ="/forms/getFormsList",method = { RequestMethod.GET, RequestMethod.POST })
+	public String getFormsList(HttpServletRequest request){
+		return "forms/formsList";
+	}
 }

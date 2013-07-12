@@ -15,7 +15,6 @@ package com.activiti.demo.persisitence.interceptor;
 import com.activiti.demo.persisitence.context.Context;
 
 
-
 /**
  * @author Tom Baeyens
  */

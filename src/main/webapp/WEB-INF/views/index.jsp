@@ -61,7 +61,7 @@
 					<ul>
 						<li><a href="forms/oaLeave/addForm"> 请假申请</a></li>
 						<li><a href="engine/addTemplate">流程部署</a></li>
-						<li><a href="engine/listTemplate">模板列表</a></li>
+						<li><a href="forms/getFormsList">流程列表</a></li>
 					</ul>
 				</li>
 				<li><a href="design/index"><i class="icon icon-tint"></i> <span>流程建模</span></a></li>

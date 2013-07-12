@@ -117,7 +117,6 @@ public class DbSqlSession implements Session {
   
   // delete ///////////////////////////////////////////////////////////////////
 
-  
   public void delete(PersistentObject persistentObject) {
     for (DeleteOperation deleteOperation: deleteOperations) {
         if (deleteOperation.sameIdentity(persistentObject)) {
