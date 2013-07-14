@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    
  <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height:100%;width:100%;">
 	<head>
 	 <%@ include file="/common/meta.jsp" %>
     <%@ include file="/common/global.jsp" %>
@@ -25,10 +25,11 @@
 
 	<title>流程模板设计</title>
 	</head>
-	<body>
+	<body style="height:100%;width:100%;">
 	
-	
-		<div id="application-toolbar" class="wui-toolbar">
+	 <div id="content"  style="height:100%;width:100%;">
+	 <div region="north" style="height:55px;">
+	 <div id="application-toolbar" class="wui-toolbar">
 						<ul>
 							<li class="toolbarGroup">
 								<ul>
@@ -100,7 +101,20 @@
 							</li>
 						</ul>
 					</div>
+	 
+	 
+	 </div>
+	 
+	 <div region="east" style="width:150px;"></div>
+	 <div region="west" style="width:150px;"></div>
+	 <div region="center" style="width:150px;"></div>
+	 
+	 
+	 
+	 
+	 </div>
+		
 
 </body>
 </html>
-<c:import url="template.jsp"></c:import>
+<%-- <c:import url="template.jsp"></c:import> --%>

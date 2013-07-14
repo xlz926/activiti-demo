@@ -6,10 +6,9 @@
 	<artifactId>activiti-demo</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.1</version>
-	<name>jerry Demo 6</name>
+	<name>BPM Demo</name>
 	
-	
-	  <properties>
+  <properties>
 	     <spring.version>3.1.2.RELEASE</spring.version>
 	     <mybatis.version>1.2.0</mybatis.version>
 	     <jackson.version>2.0.6</jackson.version>
@@ -22,7 +21,7 @@
 		<slf4j.version>1.7.1</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<h2.version>1.3.167</h2.version>
-		<activiti.version>5.14-SNAPSHOT</activiti.version>
+		<activiti.version>5.13</activiti.version>
 		
 		<!-- 项目数据库属性 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
@@ -309,6 +308,13 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
+			<plugin> 
+    <groupId>org.apache.maven.plugins</groupId> 
+    <artifactId>maven-surefire-plugin</artifactId>  
+    <configuration>  
+        <skip>true</skip>  
+    </configuration> 
+</plugin>
 		</plugins>
 	</build>
 </project>

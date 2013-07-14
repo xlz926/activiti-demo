@@ -30,6 +30,9 @@
         data-config="${jsPath }/lib/seajs/config.js"
         data-main="${jsPath }/module/common/main.js"></script> 
         
+        
+          
+<script src="${jsPath }/src/ui/framework.util.js"></script>
 
 </head>
 <body>
@@ -254,8 +257,9 @@ $(function(){
 		}}]
 	});
 	
-	
-	$.get("forms/oaLeave/save");
+	var stell =new Stell();
+	var stell1 =new Stell();
+	console.log(stell.command);
 });
 //-->
 </script>
