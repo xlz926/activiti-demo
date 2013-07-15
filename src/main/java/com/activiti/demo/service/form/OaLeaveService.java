@@ -16,18 +16,18 @@ public class OaLeaveService  implements Formservice<OaLeave> {
 	OaLeaveMapper oaLeaveMapper;
 	
 	
-	public int saveForm(OaLeave oaLeave) {
+	public OaLeave saveForm(OaLeave oaLeave) {
 		int result = 0;
 		if(oaLeave==null){
-			return 0;
+			return null;
 		}
 		else if(oaLeave.getBillNo()==null){
-			result =  oaLeaveMapper.insertOaLever(oaLeave);
+			if(oaLeaveMapper.insertOaLever(oaLeave)>0)result++;
 			System.out.println(oaLeave.getBillNo());
 	    }else{
-	      return oaLeaveMapper.updateOaLever(oaLeave);
+	    	if(oaLeaveMapper.updateOaLever(oaLeave)>0)result++;
 	    }
-		return result;
+		return result>0? oaLeave:null;
 	}
 
 	public int deleteForm(OaLeave oaLeave) {
@@ -40,8 +40,7 @@ public class OaLeaveService  implements Formservice<OaLeave> {
 	}
 
 	public List<OaLeave> viewForms() {
-		// TODO Auto-generated method stub
-		return null;
+		return oaLeaveMapper.queryOaLever();
 	}
 
 

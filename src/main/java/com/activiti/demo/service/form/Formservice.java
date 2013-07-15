@@ -7,7 +7,7 @@ import java.util.List;
 public interface Formservice<T> {
 
 	
-	int saveForm(T t);
+	T saveForm(T t);
 
 	int deleteForm(T t);
 	

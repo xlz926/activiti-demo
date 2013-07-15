@@ -24,6 +24,7 @@ public class Common {
 	
 	@RequestMapping(value ="/forms/getFormsList",method = { RequestMethod.GET, RequestMethod.POST })
 	public String getFormsList(HttpServletRequest request){
+		
 		return "forms/formsList";
 	}
 }

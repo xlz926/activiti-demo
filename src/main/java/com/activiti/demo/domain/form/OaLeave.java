@@ -7,13 +7,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 
-public class OaLeave implements Serializable  {
+public class OaLeave extends FormBase implements Serializable  {
 	
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long billNo;
     private Double days;
     
     
@@ -22,19 +21,10 @@ public class OaLeave implements Serializable  {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endTime;
-    private Long exactUser;
+
     private Long applyUser;
-    
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updateTime;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date creatTime;
-	public Long getBillNo() {
-		return billNo;
-	}
-	public void setBillNo(Long billNo) {
-		this.billNo = billNo;
-	}
+
+
 	public Double getDays() {
 		return days;
 	}
@@ -57,28 +47,11 @@ public class OaLeave implements Serializable  {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	public Long getExactUser() {
-		return exactUser;
-	}
-	public void setExactUser(Long exactUser) {
-		this.exactUser = exactUser;
-	}
 	public Long getApplyUser() {
 		return applyUser;
 	}
 	public void setApplyUser(Long applyUser) {
 		this.applyUser = applyUser;
 	}
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-	public Date getCreatTime() {
-		return creatTime;
-	}
-	public void setCreatTime(Date creatTime) {
-		this.creatTime = creatTime;
-	}
+
 }

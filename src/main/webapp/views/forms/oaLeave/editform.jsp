@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<form permission="${permission}" method="post" action="forms/oaLeave/save">
+<form permission="${permission}" method="post" action="forms/oaLeave/savePro">
 <%@ include file="../header.jsp" %>
 
  <div class="row-fluid">
