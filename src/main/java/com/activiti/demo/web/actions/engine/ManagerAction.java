@@ -87,10 +87,11 @@ public class ManagerAction {
 	@RequestMapping(value = "getToDoList", method = { RequestMethod.GET })
 	@ResponseBody
 	public Map<String,Object> getToDoList(HttpServletRequest request,Model model){
-		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("index"), "0")) ;
-		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("count"), "6")) ;
+		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageIndex"), "0")) ;
+		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageSize"), "6")) ;
+		System.out.println(start);
 		
-		List<Task> taskList =engineManager.taskService.createTaskQuery().listPage(start, count);
+		List<Task> taskList =engineManager.taskService.createTaskQuery().listPage(start*count, count);
 		 List<TaskModel> taskModelList =new ArrayList<TaskModel>();
 		 for( Task task :taskList){
 			  TaskModel taskModel = new TaskModel();
@@ -110,8 +111,8 @@ public class ManagerAction {
 	@RequestMapping(value = "getDoneList", method = { RequestMethod.GET })
 	@ResponseBody
 	public Map<String,Object> getDoneList(HttpServletRequest request,Model model){
-		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("index"), "0")) ;
-		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("count"), "6")) ;
+		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageIndex"), "0")) ;
+		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageSize"), "6")) ;
 		
 		List<HistoricTaskInstance> taskList =engineManager.historyService.createHistoricTaskInstanceQuery().finished().listPage(start, count);
 		 List<TaskModel> taskModelList =new ArrayList<TaskModel>();

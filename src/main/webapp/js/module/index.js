@@ -142,7 +142,7 @@ $(document).ready(function(){
 	});
 	
 	
-	
+	var buttonAction={};
 	
 	//定义首页model
 	var indexModel = {
@@ -169,34 +169,24 @@ $(document).ready(function(){
 			}],
 			selectedNav:1,
 			dataList:[],
-			count:90,
+			pageIndex:0,
+			pageSize:6,
+			dataCount:0,
 			viewMore:"+查看更多+"
 	}
 	
 	
-	
-	$.get("engine/getToDoList",function(data){
-		
-		$.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
-		
-		$.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
-		
-		$.observable(indexModel).setProperty("dataList",data.dataList);
-	});
-		
+
 	
 	$.link(true, "#content", indexModel);
 	
-	
-	
-	var buttonAction={};
-	
-	
 	//审核
 	buttonAction.complate=function(data){
+		var that =this;
 		$.get("forms/oaLeave/complateTask",{taskId:data.id},function(){
 				if(indexModel.dataList.length>6){
-					$.observable(indexModel.dataList).remove($.view(this).index, 1);
+					$.observable(indexModel.dataList).remove($.view(that).index, 1);
+					$.observable(indexModel).setProperty("dataCount",indexModel.dataList.length);
 				}else{
 					$.get("engine/getToDoList",function(data){
 				       $.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
@@ -212,16 +202,22 @@ $(document).ready(function(){
 	//查看更多
 	buttonAction.viewMore=function(){
 		
+		$.get(indexModel.nav[indexModel.selectedNav].url,{pageSize:indexModel.pageSize,pageIndex:++indexModel.pageIndex},function(data){
+			$.observable(indexModel).setProperty("dataList",indexModel.dataList.concat(data.dataList));
+			$.observable(indexModel).setProperty("dataCount",indexModel.dataList.length);
+		});
 	}
 	
 	
 	buttonAction.NavSelected =function(){
-		$.get($(this).attr("href"),function(data){
+		$.get($(this).attr("href"),{pageSize:indexModel.pageSize,pageIndex:indexModel.pageIndex},function(data){
 			$.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
 		
 			$.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
 			
 			$.observable(indexModel).setProperty("dataList",data.dataList);
+			
+			$.observable(indexModel).setProperty("dataCount",indexModel.dataList.length);
 		});
 		$.observable(indexModel).setProperty("selectedNav",$.view(this).index);
 	}
@@ -233,8 +229,6 @@ $(document).ready(function(){
 	   if($.isFunction(buttonAction[$this.attr("action")])){
 		   buttonAction[$this.attr("action")].call($this[0],$.view(this).data);
 	   }
-		 
-		 
 	 });
 	 
 	 

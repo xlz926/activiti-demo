@@ -117,7 +117,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="widget-box">
-							<div class="widget-title"><span class="icon"><i class="icon-file"></i></span><h5 data-link="dataList.length">排序</h5>
+							<div class="widget-title"><span class="icon"><i class="icon-file"></i></span><h5 data-link="dataCount">排序</h5>
 		</div>
 							<div class="widget-content nopadding">
 								<ul class="recent-posts row-fluid" data-link="{for dataList tmpl='#viewListTemplate'}" >				
