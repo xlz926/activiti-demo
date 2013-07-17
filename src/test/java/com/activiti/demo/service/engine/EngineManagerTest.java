@@ -23,6 +23,7 @@ public class EngineManagerTest  extends SpringTransactionalTestCase{
 	public void getNextId() {
 		try {
 			ProcessEngineConfigurationImpl peci = (ProcessEngineConfigurationImpl)engineManager.processEngineConfiguration;
+		
 			DbSqlSessionFactory dbSqlSessionFactory = (DbSqlSessionFactory) peci.getSessionFactories().get(DbSqlSession.class);
 			 dbSqlSessionFactory.getIdGenerator().getNextId();
 		} catch (Exception e) {

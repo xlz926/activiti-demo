@@ -11,17 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class Common {
 
-	@RequestMapping(value = "/forms/header", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getHeader(HttpServletRequest request){
-		return "forms/header";
-	}
-	
-	
-	@RequestMapping(value = "/forms/toolbar", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getToolbar(HttpServletRequest request){
-		return "forms/toolbar";
-	}
-	
+
 	@RequestMapping(value ="/forms/getFormsList",method = { RequestMethod.GET, RequestMethod.POST })
 	public String getFormsList(HttpServletRequest request){
 		

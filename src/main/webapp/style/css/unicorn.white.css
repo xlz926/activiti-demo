@@ -65,7 +65,9 @@ body {
 #content{
 	 background: url("../img/bg_a.png") repeat scroll 0 0 #FFFFFF;
 }
-
+ #content .recent-posts li:nth-child(odd){
+ margin-left: 0px;
+ }
 @media (max-width: 480px) {
 	#sidebar > a {
 		background-image: -moz-linear-gradient(top, #464646 0%, #404040 100%);

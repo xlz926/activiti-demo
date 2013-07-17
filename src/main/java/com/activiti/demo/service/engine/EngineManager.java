@@ -1,5 +1,6 @@
 package com.activiti.demo.service.engine;
 
+import org.activiti.engine.HistoryService;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.ManagementService;
 import org.activiti.engine.ProcessEngine;
@@ -32,6 +33,9 @@ public  class EngineManager {
 	    
 	    @Autowired
 	    public ManagementService managementService;
+	    
+	    @Autowired
+	    public HistoryService historyService ;
 	   
 	    @Autowired
 	    public ProcessEngine processEngine;

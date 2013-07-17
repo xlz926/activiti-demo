@@ -22,7 +22,7 @@ public  class Index {
 
 	@RequestMapping(value = "/index", method = { RequestMethod.GET, RequestMethod.POST })
 	public String userIndex(HttpServletRequest request,HttpSession session,Model model) {
-		
+		System.out.println("___________________________");
 		return "index";
 	}
 	

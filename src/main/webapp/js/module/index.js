@@ -127,12 +127,7 @@ $(document).ready(function(){
 	
 
 	
-	$.get("engine/getToDoList",function(data){
-		
-     $(".recent-posts").html($("#viewListTemplate").render(data));
-			
-	 $(".recent-posts li:even").css("margin-left","0px");
-	});
+	
 
 	
 	$("#container").on("click","#search .advice",function(){
@@ -144,8 +139,111 @@ $(document).ready(function(){
 			$("#indexSearch").hide().siblings("#indexNav").show();;
 			 search.addClass("dropup");
 		}
-		
-		
 	});
+	
+	
+	
+	
+	//定义首页model
+	var indexModel = {
+			nav:[{
+				title:"待办事项",
+				url:"engine/getToDoList",
+				icon:"icon-calendar",
+				count:69
+			},{
+				title:"已办事项",
+				url:"engine/getDoneList",
+				icon:"icon-shopping-bag",
+				count:89
+			},{
+				title:"我的草稿",
+				url:"",
+				icon:"icon-calendar",
+				count:69
+			},{
+				title:"关注",
+				url:"",
+				icon:"搁置",
+				count:99
+			}],
+			selectedNav:1,
+			dataList:[],
+			count:90,
+			viewMore:"+查看更多+"
+	}
+	
+	
+	
+	$.get("engine/getToDoList",function(data){
+		
+		$.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
+		
+		$.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
+		
+		$.observable(indexModel).setProperty("dataList",data.dataList);
+	});
+		
+	
+	$.link(true, "#content", indexModel);
+	
+	
+	
+	var buttonAction={};
+	
+	
+	//审核
+	buttonAction.complate=function(data){
+		$.get("forms/oaLeave/complateTask",{taskId:data.id},function(){
+				if(indexModel.dataList.length>6){
+					$.observable(indexModel.dataList).remove($.view(this).index, 1);
+				}else{
+					$.get("engine/getToDoList",function(data){
+				       $.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
+		
+					   $.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
+						
+					   $.observable(indexModel).setProperty("dataList",data.dataList);
+			        });
+				}
+		});
+	}
+	
+	//查看更多
+	buttonAction.viewMore=function(){
+		
+	}
+	
+	
+	buttonAction.NavSelected =function(){
+		$.get($(this).attr("href"),function(data){
+			$.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
+		
+			$.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
+			
+			$.observable(indexModel).setProperty("dataList",data.dataList);
+		});
+		$.observable(indexModel).setProperty("selectedNav",$.view(this).index);
+	}
+	 
+	
+	 $("#container").on("click",".action",function(event){
+		 event.preventDefault();
+		 var $this =$(this);
+	   if($.isFunction(buttonAction[$this.attr("action")])){
+		   buttonAction[$this.attr("action")].call($this[0],$.view(this).data);
+	   }
+		 
+		 
+	 });
+	 
+	 
+	
+	
 });	
+
+
+
+
+
 

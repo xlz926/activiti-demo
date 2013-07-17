@@ -2,13 +2,17 @@ package com.activiti.demo.web.actions.engine;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.task.Task;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,15 +86,50 @@ public class ManagerAction {
 	
 	@RequestMapping(value = "getToDoList", method = { RequestMethod.GET })
 	@ResponseBody
-	public List<TaskModel> getToDoList(HttpServletRequest request,Model model){
-		List<Task> taskList =engineManager.taskService.createTaskQuery().list();
+	public Map<String,Object> getToDoList(HttpServletRequest request,Model model){
+		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("index"), "0")) ;
+		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("count"), "6")) ;
+		
+		List<Task> taskList =engineManager.taskService.createTaskQuery().listPage(start, count);
 		 List<TaskModel> taskModelList =new ArrayList<TaskModel>();
 		 for( Task task :taskList){
 			  TaskModel taskModel = new TaskModel();
 				BeanUtils.copyProperties(task, taskModel);
 				taskModelList.add(taskModel);
 		 }
-		return taskModelList;
+		 
+	 Map<String,Object> result =new HashMap<String, Object>();
+		 
+		 result.put("toDoCount",engineManager.taskService.createTaskQuery().count());
+		 result.put("doneCount", engineManager.historyService.createHistoricTaskInstanceQuery().count());
+		 result.put("dataList", taskModelList);
+		return result;
 	}
+	
+	
+	@RequestMapping(value = "getDoneList", method = { RequestMethod.GET })
+	@ResponseBody
+	public Map<String,Object> getDoneList(HttpServletRequest request,Model model){
+		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("index"), "0")) ;
+		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("count"), "6")) ;
+		
+		List<HistoricTaskInstance> taskList =engineManager.historyService.createHistoricTaskInstanceQuery().finished().listPage(start, count);
+		 List<TaskModel> taskModelList =new ArrayList<TaskModel>();
+		 for( HistoricTaskInstance task :taskList){
+			  TaskModel taskModel = new TaskModel();
+				BeanUtils.copyProperties(task, taskModel);
+				taskModelList.add(taskModel);
+		 }
+		 
+		 
+		 Map<String,Object> result =new HashMap<String, Object>();
+		 
+		 result.put("toDoCount",engineManager.taskService.createTaskQuery().count());
+		 result.put("doneCount", engineManager.historyService.createHistoricTaskInstanceQuery().count());
+		 result.put("dataList", taskModelList);
+		 
+		return result;
+	}
+	
 	
 }

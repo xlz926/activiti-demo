@@ -15,6 +15,11 @@
 
     
     
+  	<context:component-scan base-package="com.activiti.demo" > 
+  		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+  	   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+  	</context:component-scan>
+  	
       <!-- scan for mappers and let them be autowired -->
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -32,9 +37,5 @@
     
   	<import resource="classpath*:/activiti-context.xml" />
   	
-  	
-  	<context:component-scan base-package="com.activiti.demo" > 
-  	   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-  	</context:component-scan>
   	
 </beans>
