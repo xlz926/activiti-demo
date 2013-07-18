@@ -1,0 +1,97 @@
+<%-- 
+Name:
+Author: liezun.xiao
+Description: 
+--%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Java" Src="" Inherits="" Debug="False" CompilerVersion="v3.5" Description="Template description here." %><%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="Package" Type="System.String" Default="" Category="Text" Description="Namespace for this class" %>
+<%@ Property Name="TablePrefix" Type="System.String" Default="act_" Optional="False" Category="a.????" Description="???" %>
+
+<%@ Assembly Name="System" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="System.Data" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+
+
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.ComponentModel" %>
+<%@ Import Namespace="System.Collections.Specialized" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Assembly Src="CSMyBatisBuilder.cs" %>
+<%@ Import Namespace="CSMyBatisBuilder" %>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="<%=Package%>.dao.<%=SourceTable.FullName%>dao">
+
+	<resultMap id="<%=CSHelper.StripPrefix(SourceTable.FullName,this.TablePrefix)%>Map" type="<%=Package%>.model.<%=CSHelper.StripPrefix(SourceTable.FullName,this.TablePrefix)%>">
+	      <% foreach (ColumnSchema column in SourceTable.Columns) {%>
+          <result property="<%= CSHelper.GetCamelCase(column.Name)%>" column="<%= column.Name%>" />
+        <% } %>    
+	</resultMap>
+    
+    
+    
+	<!-- definde common column -->
+	<sql id="base_column">
+		 <% for (int i=0,length=SourceTable.Columns.Count;i<length;i++){%>
+          "<%= SourceTable.Columns[i].Name%>" <%if ((i+1)!=length){%>,<%}%>
+        <% } %> 
+	</sql>
+    
+
+    <%if(SourceTable.HasPrimaryKey){%>
+	<select id="find<%=CSHelper.GetPascalCase(CSHelper.StripPrefix(SourceTable.Name,this.TablePrefix))%>ByPK" resultMap="<%=SourceTable.FullName%>Map">
+		SELECT
+		<include refid="base_column" />
+		FROM <%=SourceTable.FullName%>
+        WHERE 
+         <% for (int i=0,length=SourceTable.PrimaryKey.MemberColumns.Count;i<length;i++) {%>
+            <%=SourceTable.PrimaryKey.MemberColumns[i].Name%> = #{<%=CSHelper.GetPascalCase(SourceTable.PrimaryKey.MemberColumns[i].Name)%>,jdbcType=<%=SourceTable.PrimaryKey.MemberColumns[i].DataType%>} <%if ((i+1)!=length){%>,<%}%>
+        <% } %>  
+	</select>
+    <%}%>
+	
+
+
+	<select id="query<%=CSHelper.GetPascalCase(CSHelper.StripPrefix(SourceTable.Name,this.TablePrefix))%>" resultMap="<%=SourceTable.FullName%>Map"  parameterType="java.util.Map">
+		SELECT
+		<include refid="base_column" />
+		FROM <%=SourceTable.FullName%>
+	</select>
+
+	<delete id="delete<%=CSHelper.GetPascalCase(CSHelper.StripPrefix(SourceTable.Name,this.TablePrefix))%>ByPK">
+		DELETE FROM <%=SourceTable.FullName%>
+		WHERE<% for (int i=0,length=SourceTable.PrimaryKey.MemberColumns.Count;i<length;i++) {%>
+              <%=SourceTable.PrimaryKey.MemberColumns[i].Name%> = #{<%=CSHelper.GetCamelCase(SourceTable.PrimaryKey.MemberColumns[i].Name)%>,jdbcType=<%=SourceTable.PrimaryKey.MemberColumns[i].DataType%>} <%if ((i+1)!=length){%>,<%}%>
+         <% } %>  
+	</delete>
+    
+    
+    <insert id="insert<%=CSHelper.GetPascalCase(CSHelper.StripPrefix(SourceTable.Name,this.TablePrefix))%>" >
+     insert into <%=SourceTable.Name%> 
+            (<% for (int i=0,length=SourceTable.Columns.Count;i<length;i++) {%>
+              <%=SourceTable.Columns[i].Name%><%if((i+1)!=length){%>,<%}%><%}%>
+            )
+    values ( <%for(int i=0,length=SourceTable.Columns.Count;i<length;i++) {%>
+            #{<%=CSHelper.GetCamelCase(SourceTable.Columns[i].Name)%>,jdbcType=<%=SourceTable.Columns[i].DataType%>}<%if((i+1)!=length){%>,<%}%><%}%>
+           )
+    </insert>
+    
+    
+    <update id="update<%=CSHelper.GetPascalCase(CSHelper.StripPrefix(SourceTable.Name,this.TablePrefix))%>">
+     update  <%=SourceTable.Name%> 
+     set  <%for(int i=0,length=SourceTable.NonKeyColumns.Count;i<length;i++) {%>
+          <%=SourceTable.NonKeyColumns[i].Name%> = #{<%=CSHelper.GetCamelCase(SourceTable.NonKeyColumns[i].Name)%> ,jdbcType=<%=SourceTable.NonKeyColumns[i].DataType %>}<%if((i+1)!=length){%>,<%}%>  <%}%>
+     where
+         <% for (int i=0,length=SourceTable.PrimaryKey.MemberColumns.Count;i<length;i++) {%> <%=SourceTable.PrimaryKey.MemberColumns[i].Name%> = #{<%=CSHelper.GetPascalCase(SourceTable.PrimaryKey.MemberColumns[i].Name)%>,jdbcType=<%=SourceTable.PrimaryKey.MemberColumns[i].DataType%>} <%if ((i+1)!=length){%>,<%}%>
+         <% } %>  
+    
+    </update>
+    
+    
+    
+</mapper>
