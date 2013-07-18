@@ -55,5 +55,11 @@ public class EditAction extends FormsAction {
 		formContext.complete(taskId);
 		return "/index";
 	}
+	
+	@RequestMapping(value = "claimTask", method = { RequestMethod.GET, RequestMethod.POST })
+	public String claimTask(HttpServletRequest request ,@RequestParam("taskId") String taskId){
+		formContext.claim(taskId, "liezun.xiao");
+		return "/index";
+	}
 
 }

@@ -2,7 +2,6 @@
 	
 	
 	 
-<link href="${jsPath }/src/themes/bootstrap/easyui.css" rel="stylesheet" media="screen">
 	 
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.util.js"></script>
 <script type="text/javascript" src="${jsPath }/src/ui/viewui.comboxTree.js"></script>

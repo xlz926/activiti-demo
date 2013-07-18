@@ -20,11 +20,7 @@
 		    onSelectPage: function(pageNumber, pageSize){},
 		    onBeforeRefresh: function(pageNumber, pageSize){},
 		    onRefresh: function(pageNumber, pageSize){},
-		    onChangePageSize: function(pageSize){},
-		
-		    beforePageText: 'Page',
-		    afterPageText: 'of {pages}',
-		    displayMsg: 'Displaying {from} to {to} of {totals} items'
+		    onChangePageSize: function(pageSize){}
     },
     _create: function () {
          this.opts=this.options;
@@ -32,7 +28,7 @@
          this.opts.holder =  $("<ul></ul>");
          this.opts.pagesShowing =$([]);
          
-         $.data(this.element, 'pagination', {
+         $.data(this.element, this.widgetName, {
 					options: this.opts
 		 });
         
@@ -96,17 +92,17 @@
         navhtml = writeBtn( "first" ) + writeBtn( "previous" );
         for ( ; i <= pageCount; i++ ) {
             if ( i === 1 && opts.startRange === 0 ) {
-                navhtml += "<li><span class='first'>...</span></li>";
+                navhtml += "<li><span class='last'>...</span></li>";
             }
             if ( i > opts.startRange && i <= pageCount - opts.endRange ) {
-                navhtml += "<li><a href='#'  pageIndex="+i+"  class='jp-hidden'>";
+                navhtml += "<li><a href='#'  pageIndex="+i+"  class='hide'>";
             } else {
                 navhtml += "<li><a pageIndex="+i+">";
             }
 			 navhtml += i;
             navhtml += "</a></li>";
             if ( i === opts.startRange || i === pageCount - opts.endRange ) {
-                navhtml += "<li><span class='last'>...</span></li>";
+                navhtml += "<li><span class='first'>...</span></li>";
             }
         }
 
@@ -167,39 +163,38 @@
         interval = { start: start, end: end };
 
          if ( page === 1) {
-            target.find("a.jp-first").addClass("jp-disabled");
-            target.find("a.jp-previous").addClass("jp-disabled");
+            target.find("a.jp-first").addClass("disabled");
+            target.find("a.jp-previous").addClass("disabled");
         } else if(opts.pageNumber !== 1 && page > 1){
-             target.find("a.jp-first").removeClass("jp-disabled");
-            target.find("a.jp-previous").removeClass("jp-disabled");
+             target.find("a.jp-first").removeClass("disabled");
+            target.find("a.jp-previous").removeClass("disabled");
         }
         if ( page === pageCount ) {
-            target.find("a.jp-next").addClass("jp-disabled");
-            target.find("a.jp-last").addClass("jp-disabled");
+            target.find("a.jp-next").addClass("disabled");
+            target.find("a.jp-last").addClass("disabled");
         }else if(opts.pageNumber !== pageCount && page < pageCount){
-            target.find("a.jp-next").removeClass("jp-disabled");
-            target.find("a.jp-last").removeClass("jp-disabled");
+            target.find("a.jp-next").removeClass("disabled");
+            target.find("a.jp-last").removeClass("disabled");
         }
-
         target.find("a.jp-current").removeClass("jp-current");
         target.find("a[pageindex='"+page+"']").addClass("jp-current");
 
        var hold = target.find("ul a").not(".jp-first, .jp-previous, .jp-next, .jp-last");
    
-       hold.addClass("jp-hidden").slice( interval.start, interval.end ).removeClass("jp-hidden");
-       hold.slice(0,opts.startRange).removeClass("jp-hidden");
-       hold.slice(pageCount-opts.endRange).removeClass("jp-hidden");
+       hold.addClass("hide").slice( interval.start, interval.end ).removeClass("hide");
+       hold.slice(0,opts.startRange).removeClass("hide");
+       hold.slice(pageCount-opts.endRange).removeClass("hide");
 
         if ( interval.start > opts.startRange || ( opts.startRange === 0 && interval.start > 0 ) ) { 
-            target.find("li>span:first").removeClass("jp-hidden");
+            target.find("li>span:first").removeClass("hide");
         } else { 
-            target.find("li>span:first").addClass("jp-hidden");
+            target.find("li>span:first").addClass("hide");
         }
         
         if ( interval.end < pageCount - opts.endRange ) {
-            target.find("li>span:last").removeClass("jp-hidden");
+            target.find("li>span:last").removeClass("hide");
         } else { 
-            target.find("li>span:last").addClass("jp-hidden");
+            target.find("li>span:last").addClass("hide");
         }
   
     },

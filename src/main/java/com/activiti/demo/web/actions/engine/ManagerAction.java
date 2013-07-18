@@ -82,6 +82,28 @@ public class ManagerAction {
 	}
 	
 	
+	@RequestMapping(value = "getToClaimList", method = { RequestMethod.GET })
+	@ResponseBody
+	public Map<String,Object> getToClaimList(HttpServletRequest request,Model model){
+		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageIndex"), "0")) ;
+		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageSize"), "6")) ;
+		System.out.println(start);
+		
+		List<Task> taskList =engineManager.taskService.createTaskQuery().taskUnassigned().listPage(start*count, count);
+		 List<TaskModel> taskModelList =new ArrayList<TaskModel>();
+		 for( Task task :taskList){
+			  TaskModel taskModel = new TaskModel();
+				BeanUtils.copyProperties(task, taskModel);
+				taskModelList.add(taskModel);
+		 }
+		 
+	     Map<String,Object> result =new HashMap<String, Object>();
+		 result.put("toDoCount",engineManager.taskService.createTaskQuery().count());
+		 result.put("doneCount", engineManager.historyService.createHistoricTaskInstanceQuery().count());
+		 result.put("dataList", taskModelList);
+		return result;
+	}
+	
 	
 	
 	@RequestMapping(value = "getToDoList", method = { RequestMethod.GET })
@@ -89,8 +111,7 @@ public class ManagerAction {
 	public Map<String,Object> getToDoList(HttpServletRequest request,Model model){
 		int start = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageIndex"), "0")) ;
 		int count = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("pageSize"), "6")) ;
-		System.out.println(start);
-		
+	
 		List<Task> taskList =engineManager.taskService.createTaskQuery().listPage(start*count, count);
 		 List<TaskModel> taskModelList =new ArrayList<TaskModel>();
 		 for( Task task :taskList){

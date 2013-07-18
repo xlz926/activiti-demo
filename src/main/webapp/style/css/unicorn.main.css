@@ -712,7 +712,7 @@ a:hover {
 .widget-box .widget-footer {
 	padding: 0;
 }
-.widget-box .widget-footer a {
+.widget-box .widget-footer>a {
 	padding: 5px;
 	text-align: center;
 	display: block;

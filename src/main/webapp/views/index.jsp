@@ -110,22 +110,53 @@
 	            <ul class="quick-actions-horizontal" data-link="{for nav tmpl='#NavTemplate' }">
 							
 				</ul>
+		
 			
 					</div>	
 				</div>
 			
 				<div class="row-fluid">
 					<div class="span12">
-						<div class="widget-box">
-							<div class="widget-title"><span class="icon"><i class="icon-file"></i></span><h5 data-link="dataCount">排序</h5>
+						<div class="widget-box" id="listView">
+							<div class="widget-title"><span class="icon viewType"><i class="icon-file"></i></span><h5 >排序</h5>
+							<span class="label label-info tip-left" data-link="dataCount">0</span>
 		</div>
 							<div class="widget-content nopadding">
-								<ul class="recent-posts row-fluid" data-link="{for dataList tmpl='#viewListTemplate'}" >				
-								</ul>
+								<ul  class="recent-posts row-fluid" data-link="{for dataList tmpl='#viewListTemplate'}" >				
+								</ul>		
 							</div>
 							<div class="widget-footer">
 							<a href="" action="viewMore" class="tip-top action" data-original-title="View all posts" data-link="viewMore">  </a>
 							</div>
+						</div>
+						<div class="widget-box hide" id="tableView">
+							<div class="widget-title"><span class="icon viewType"><i class="icon-file"></i></span><h5 >排序</h5>
+							<span class="label label-info tip-left" data-link="dataCount">0</span>
+		</div>
+							<div class="widget-content nopadding">
+								<table class="table"  id="tableView">
+				<thead>
+				<tr>
+				<th>单据编号</th>
+				<th>单据名称</th>
+				<th>节点名称</th>
+				<th>添加时间</th>
+				<th>修改时间</th>
+				<th>申请人</th>				
+				</tr>
+				</thead >
+				<tbody data-link="{for dataList tmpl='#viewTableTemplate'}">
+				
+				
+				</tbody>
+				
+				</table>
+							</div>
+							<div id="dataPagenation" class="widget-footer">
+					
+   
+                            </div>
+						
 						</div>
 					</div>
 				</div>
@@ -168,7 +199,24 @@ $(function(){
 											<p>
 												<a href="#">{{:name}}</a>
 											</p>
-					 <a href="#" class="btn btn-primary btn-mini action" action="complate">审核</a> <a href="#" class="btn btn-success btn-mini">审核</a> <a href="#" class="btn btn-danger btn-mini">关注</a>
+					 <a href="#" class="btn btn-primary btn-mini action" action="claimTask">签收</a> 
+                    <a href="#" class="btn btn-success btn-mini action" action="complate">审核</a> <a href="#" class="btn btn-danger btn-mini">关注</a>
 				</div>
 			</li>
+</script>
+
+<script type="text/x-jsrender" id="viewTableTemplate">
+<tr>
+<td><img width="40" height="40" src="style/img/demo/av1.jpg" alt="User"></td>
+<td>{{:name}}</td>
+<td>{{:id}}</td>
+<td></td>
+<td></td>
+<td></td>
+<td> {{: ~formatDate(createTime,'yyyy-MM-dd')}}</td>
+<td></td>
+
+</tr>
+
+
 </script>

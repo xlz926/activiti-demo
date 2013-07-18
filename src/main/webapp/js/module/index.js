@@ -148,7 +148,7 @@ $(document).ready(function(){
 	var indexModel = {
 			nav:[{
 				title:"待办事项",
-				url:"engine/getToDoList",
+				url:"engine/getToClaimList",
 				icon:"icon-calendar",
 				count:69
 			},{
@@ -157,8 +157,8 @@ $(document).ready(function(){
 				icon:"icon-shopping-bag",
 				count:89
 			},{
-				title:"我的草稿",
-				url:"",
+				title:"待审事项",
+				url:"engine/getToDoList",
 				icon:"icon-calendar",
 				count:69
 			},{
@@ -199,6 +199,23 @@ $(document).ready(function(){
 		});
 	}
 	
+	//签收
+	buttonAction.claimTask=function(data){
+		$.get("forms/oaLeave/claimTask",{taskId:data.id},function(){
+			if(indexModel.dataList.length>6){
+					$.observable(indexModel.dataList).remove($.view(that).index, 1);
+					$.observable(indexModel).setProperty("dataCount",indexModel.dataList.length);
+				}else{
+					$.get("engine/getToClaimList",function(data){
+				       $.observable(indexModel.nav[1]).setProperty("count",data.toDoCount);
+					   $.observable(indexModel.nav[2]).setProperty("count",data.doneCount);
+					   $.observable(indexModel).setProperty("dataList",data.dataList);
+			        });
+				}
+			
+		});
+	};
+	
 	//查看更多
 	buttonAction.viewMore=function(){
 		
@@ -210,7 +227,8 @@ $(document).ready(function(){
 	
 	
 	buttonAction.NavSelected =function(){
-		$.get($(this).attr("href"),{pageSize:indexModel.pageSize,pageIndex:indexModel.pageIndex},function(data){
+		$.observable(indexModel).setProperty("selectedNav",$.view(this).index);
+		$.get(indexModel.nav[indexModel.selectedNav].url,{pageSize:indexModel.pageSize,pageIndex:indexModel.pageIndex},function(data){
 			$.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
 		
 			$.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
@@ -219,7 +237,29 @@ $(document).ready(function(){
 			
 			$.observable(indexModel).setProperty("dataCount",indexModel.dataList.length);
 		});
-		$.observable(indexModel).setProperty("selectedNav",$.view(this).index);
+		
+		
+		$("#dataPagenation").pagination({
+			showPageList:false,
+			pageSize:6,
+			totals:indexModel.nav[indexModel.selectedNav].count,
+			onSelectPage:function(index,size){
+			indexModel.pageSize = size;
+			indexModel.pageIndex = index;
+			$.get(indexModel.nav[indexModel.selectedNav].url,{
+				pageSize:indexModel.pageSize,
+				pageIndex:indexModel.pageIndex
+				},
+				function(data){
+					$.observable(indexModel.nav[0]).setProperty("count",data.toDoCount);
+				
+					$.observable(indexModel.nav[1]).setProperty("count",data.doneCount);
+					
+					$.observable(indexModel).setProperty("dataList",data.dataList);
+					
+					$.observable(indexModel).setProperty("dataCount",indexModel.dataList.length);
+				});
+		}});
 	}
 	 
 	
@@ -230,6 +270,14 @@ $(document).ready(function(){
 		   buttonAction[$this.attr("action")].call($this[0],$.view(this).data);
 	   }
 	 });
+	 
+	 //切换列表的展示方式
+	 $("#container").on("click",".widget-title .viewType",function(){
+		var  box = $(this).closest(".widget-box").hide().siblings(".widget-box").show();
+		 
+	 });
+	 
+	 
 	 
 	 
 	
