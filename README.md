@@ -1,4 +1,4 @@
-zunzun-activiti-demo
+activiti-demo
 ====================
 java 开发框架 spring mvc + mybatis + shiro + hibernate + spring + ehcache + acitiviti    
 
