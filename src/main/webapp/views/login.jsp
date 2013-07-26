@@ -22,19 +22,19 @@
             <img src="style/img/logo.png" alt="" />
         </div>
         <div id="loginbox">            
-            <form id="loginform" class="form-vertical" action="index" />
+            <form id="loginform" class="form-vertical" action="${basePath }/login" method="post"/>
 				<p>请输入你的用户名和密码</p>
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-prepend">
-                            <span class="add-on"><i class="icon-user"></i></span><input type="text" placeholder="Username" />
+                            <span class="add-on"><i class="icon-user"></i></span><input type="text" name="username" placeholder="Username" />
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-prepend">
-                            <span class="add-on"><i class="icon-lock"></i></span><input type="password" placeholder="Password" />
+                            <span class="add-on"><i class="icon-lock"></i></span><input type="password" placeholder="Password" name="password" />
                         </div>
                     </div>
                 </div>

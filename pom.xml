@@ -7,31 +7,57 @@
 	<packaging>war</packaging>
 	<version>1.0.1</version>
 	<name>BPM Demo</name>
-	
-  <properties>
-	     <spring.version>3.1.2.RELEASE</spring.version>
-	     <mybatis.version>1.2.0 </mybatis.version>
-	     <jackson.version>2.0.6</jackson.version>
-	     <shiro.version>1.2.1</shiro.version>
-	     <hibernate.version>4.1.4.Final</hibernate.version>
+
+	<properties>
+		<spring.version>3.1.2.RELEASE</spring.version>
+		<mybatis.version>1.2.0 </mybatis.version>
+		<jackson.version>2.0.6</jackson.version>
+		<shiro.version>1.2.2</shiro.version>
+		<hibernate.version>4.1.4.Final</hibernate.version>
 		<spring-data-jpa.version>1.1.0.RELEASE</spring-data-jpa.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<commons-io.version>2.4</commons-io.version>
-		<spymemcached.version>2.8.1</spymemcached.version>
+		<spymemcached.version>2.9.0</spymemcached.version>
 		<slf4j.version>1.7.1</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<h2.version>1.3.167</h2.version>
 		<activiti.version>5.13</activiti.version>
-		
+
 		<!-- 项目数据库属性 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
 		<jdbc.driver.version>5.1.21</jdbc.driver.version>
-	  </properties>
-	 
+	</properties>
+
+
+	<repositories>
+		<repository>
+			<id>Activiti</id>
+			<name>Activiti</name>
+			<url>https://maven.alfresco.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Codehaus</id>
+			<url>https://oss.sonatype.org/</url>
+		</repository>
+		<repository>
+			<id>alfresco.release.repo</id>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/activiti-releases/</url>
+		</repository>
+		<repository>
+			<id>terracotta-repository</id>
+			<url>http://www.terracotta.org/download/reflector/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
 	<dependencies>
-	
-	<dependency>
+
+		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
 			<version>${activiti.version}</version>
@@ -41,7 +67,7 @@
 			<artifactId>activiti-spring</artifactId>
 			<version>${activiti.version}</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-bpmn-model</artifactId>
@@ -52,30 +78,30 @@
 			<artifactId>activiti-bpmn-converter</artifactId>
 			<version>${activiti.version}</version>
 		</dependency>
-	<!-- srping 框架依赖包 -->
+		<!-- srping 框架依赖包 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-		</dependency>
 		<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -83,7 +109,7 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- web json 数据格式化依赖包 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -105,32 +131,33 @@
 			<artifactId>jackson-mapper-lgpl</artifactId>
 			<version>1.9.9</version>
 		</dependency>
-		
-		
-		
-		
-		<!-- 会话权限管理shiro -->
-			<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
+
+		<!-- memcached -->
 		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-ehcache</artifactId>
-			<version>${shiro.version}</version>
+			<groupId>net.spy</groupId>
+			<artifactId>spymemcached</artifactId>
+			<version>${spymemcached.version}</version>
 		</dependency>
+
+
+		<!-- 会话权限管理shiro -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.7</version>
 		</dependency>
-		
-		
-		
-		
-		
-		
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-all</artifactId> 
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.terracotta</groupId>
+			<artifactId>terracotta-toolkit-runtime-ee</artifactId>
+			<version>4.0.0</version>
+		</dependency> 
+
+
 		<!-- UTILS -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -142,7 +169,7 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
@@ -153,9 +180,9 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		
-			<!-- spring data access -->
+
+
+		<!-- spring data access -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
@@ -186,16 +213,16 @@
 		</dependency>
 
 
-           <!-- jdbc driver -->
+		<!-- jdbc driver -->
 		<dependency>
 			<groupId>${jdbc.driver.groupId}</groupId>
 			<artifactId>${jdbc.driver.artifactId}</artifactId>
 			<version>${jdbc.driver.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		
-	   <!-- hibernate -->
+
+
+		<!-- hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -210,30 +237,36 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache-core</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.1.Final</version>
 		</dependency>
-		
-		
+
+
 		<!-- mybatis依赖项 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis.version}</version>
-		</dependency> 
-		
-		
-		
-			<!-- java.util.logging 实际调用slf4j -->
+		</dependency>
+
+
+
+		<!-- java.util.logging 实际调用slf4j -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -246,52 +279,22 @@
 			<scope>runtime</scope>
 		</dependency>
 
-	<dependency>
-  <groupId>cglib</groupId>
-  <artifactId>cglib</artifactId>
-  <version>2.2.2</version>
-</dependency>
-	
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
 
 		<!-- LOGGING end -->
-		
+
 		<dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
 		</dependency>
 	</dependencies>
-	
-	
-	
-	
-	
-	
-	
-	<repositories>
-		<repository>
-			<id>Activiti</id>
-			<name>Activiti</name>
-			<url>https://maven.alfresco.com/nexus/content/groups/public</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>Codehaus</id>
-			<url>https://oss.sonatype.org/</url>
-		</repository>
-		 <repository>
-      <id>alfresco.release.repo</id>
-      <url>https://artifacts.alfresco.com/nexus/content/repositories/activiti-releases/</url>
-    </repository>
-	</repositories>
-	
-	
-	
-	
-	
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -308,13 +311,13 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
-			<plugin> 
-    <groupId>org.apache.maven.plugins</groupId> 
-    <artifactId>maven-surefire-plugin</artifactId>  
-    <configuration>  
-        <skip>true</skip>  
-    </configuration> 
-</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

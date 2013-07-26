@@ -36,6 +36,8 @@
 	</bean>
     
   	<import resource="classpath*:/activiti-context.xml" />
+  	<import resource="classpath*:/applicationContext-shiro.xml" />
+  	<import resource="classpath*:/applicationContext-memcached.xml" />
   	
   	
 </beans>
